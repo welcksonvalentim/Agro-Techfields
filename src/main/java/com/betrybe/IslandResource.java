@@ -5,6 +5,7 @@ import java.net.URI;
 import javax.inject.Inject;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
+import javax.ws.rs.PATCH;
 import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
@@ -33,7 +34,7 @@ public class IslandResource {
   public Response getById(@PathParam("id") String id) {
     try {
       Island island = islandRepository.findById(new ObjectId(id));
-      return Response.ok(island).build();
+      return Response.accepted(island).build();
     } catch (Exception e) {
       throw new Error(e.getMessage());
     }
@@ -49,7 +50,7 @@ public class IslandResource {
     }
   }
 
-  @PUT
+  @PATCH
   @Path("/{id}")
   public Response update(@PathParam("id") String id, Island island) {
     try {
