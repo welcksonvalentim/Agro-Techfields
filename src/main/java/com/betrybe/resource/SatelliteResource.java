@@ -1,4 +1,4 @@
-package com.betrybe;
+package com.betrybe.resource;
 
 import java.net.URI;
 import java.util.Collections;
@@ -10,6 +10,10 @@ import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.core.Response;
+
+import com.betrybe.entity.Image;
+import com.betrybe.entity.Satellite;
+import com.betrybe.repository.SatelliteRepository;
 
 import org.bson.types.ObjectId;
 

@@ -9,6 +9,8 @@ import org.junit.jupiter.api.DisplayName;
 
 import static io.restassured.RestAssured.given;
 
+import com.betrybe.entity.Island;
+
 @QuarkusTest
 public class GreetingResourceTest {
 
@@ -35,7 +37,6 @@ public class GreetingResourceTest {
   @DisplayName("4 - cadastra nova ilha")
   public void testPOSTIsland() {
     Island island = new Island();
-    System.out.println("AAAAAAAAAAAAAAAAAAAAAAAAAAAAA" + island.id);
     island.area = "10";
     island.location = "N10E25";
     island.temperature = "25";

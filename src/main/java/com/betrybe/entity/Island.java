@@ -1,4 +1,4 @@
-package com.betrybe;
+package com.betrybe.entity;
 
 import java.text.SimpleDateFormat;
 import java.util.Collections;
