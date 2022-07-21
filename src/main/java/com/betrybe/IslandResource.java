@@ -5,6 +5,7 @@ import java.net.URI;
 import javax.inject.Inject;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
+import javax.ws.rs.PATCH;
 import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
@@ -18,9 +19,9 @@ public class IslandResource {
 
   @Inject
   IslandRepository islandRepository;
-  
+
   @GET
-  public Response getAll(@PathParam("id") String id) {
+  public Response ListAll(@PathParam("id") String id) {
     try {
       return Response.ok(islandRepository.listAll()).build();
     } catch (Exception e) {
@@ -30,7 +31,7 @@ public class IslandResource {
 
   @GET
   @Path("/{id}")
-  public Response getById(@PathParam("id") String id) {
+  public Response findById(@PathParam("id") String id) {
     try {
       Island island = islandRepository.findById(new ObjectId(id));
       return Response.ok(island).build();
@@ -43,19 +44,19 @@ public class IslandResource {
   public Response create(Island island) {
     try {
       islandRepository.persist(island);
-      return Response.created(new URI("/"+island.id)).build();
+      return Response.created(new URI("/" + island.id)).build();
     } catch (Exception e) {
       throw new Error(e.getMessage());
     }
   }
 
-  @PUT
+  @PATCH
   @Path("/{id}")
   public Response update(@PathParam("id") String id, Island island) {
     try {
       island.id = new ObjectId(id);
       islandRepository.update(island);
-      return Response.ok(island).build();
+      return Response.accepted(island).build();
     } catch (Exception e) {
       throw new Error(e.getMessage());
     }
