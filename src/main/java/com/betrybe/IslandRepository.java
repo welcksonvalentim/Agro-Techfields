@@ -8,9 +8,9 @@ import io.quarkus.mongodb.panache.PanacheMongoRepository;
 import io.quarkus.panache.common.Sort;
 
 @ApplicationScoped
-public class IslandRepository implements PanacheMongoRepository<Island>{
-  
+public class IslandRepository implements PanacheMongoRepository<Island> {
+
   public List<Island> findAllList() {
-    return listAll(Sort.by("temperature"));
+    return listAll(Sort.by("createdAt"));
   }
 }
