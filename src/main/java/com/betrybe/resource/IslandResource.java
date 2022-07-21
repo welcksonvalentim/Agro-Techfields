@@ -1,4 +1,4 @@
-package com.betrybe;
+package com.betrybe.resource;
 
 import java.net.URI;
 
@@ -10,6 +10,9 @@ import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.core.Response;
+
+import com.betrybe.entity.Island;
+import com.betrybe.repository.IslandRepository;
 
 import org.bson.types.ObjectId;
 

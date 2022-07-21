@@ -1,4 +1,4 @@
-package com.betrybe;
+package com.betrybe.entity;
 
 import java.util.Collections;
 import java.util.List;
