@@ -3,6 +3,7 @@ package com.betrybe.resource;
 import java.net.URI;
 
 import javax.inject.Inject;
+import javax.transaction.Transactional;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.PATCH;
@@ -60,6 +61,9 @@ public class IslandResource {
       islandRepository.update(island);
       return Response.accepted(island).build();
     } catch (Exception e) {
+      Island oldIsland = islandRepository.findById(new ObjectId(id));
+      oldIsland.status = false;
+      islandRepository.update(island);
       throw new Error(e.getMessage());
     }
   }
@@ -68,8 +72,7 @@ public class IslandResource {
   @Path("/{id}")
   public Response delete(@PathParam("id") String id) {
     try {
-      Island island = islandRepository.findById(new ObjectId(id));
-      islandRepository.delete(island);
+      islandRepository.deleteById(new ObjectId(id));
       return Response.noContent().build();
     } catch (Exception e) {
       throw new Error(e.getMessage());
